@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Principal-Font';
+  src: url('./assets/fonts/Oswald-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: 'Normal-Font';
+  src: url('./assets/fonts/Nunito-VariableFont_wght.ttf');
+}
+
+*{
+  font-family: "Normal-Font";
+  margin: 0;
+}
