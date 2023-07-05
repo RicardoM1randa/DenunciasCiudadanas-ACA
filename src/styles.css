@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'Principal-Font';
+  src: url('./assets/fonts/Oswald-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: 'Normal-Font';
+  src: url('./assets/fonts/Nunito-VariableFont_wght.ttf');
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+*{
+  font-family: "Normal-Font";
+  margin: 0;
+}
+
+#wave1{
+  animation-name: waveAnimation;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+#wave2{
+  animation-name: waveAnimation;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+#wave3{
+  animation-name: waveAnimationMedium;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+#wave4{
+  animation-name: waveAnimationLast;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+#wave5{
+  animation-name: waveAnimationLast;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes waveAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -50px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes waveAnimationMedium {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -30px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes waveAnimationLast {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+body {
+  overflow: overlay;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  background: rgb(71, 17, 80);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #986f9c;
+  border-radius: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(71, 17, 80);
+  border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ebb7f1
+}
