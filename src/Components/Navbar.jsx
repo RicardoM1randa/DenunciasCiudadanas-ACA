@@ -7,9 +7,26 @@ import Button from "@mui/material/Button";
 import { LogoOscuro } from "../assets/images/Logos";
 import { Link } from "react-router-dom";
 import usePositionScreen from "../hooks/usePositionScreen";
+import { useAuth } from "../auth/auth";
 
 export default function Navbar() {
+  const { user } = useAuth(); // Obtiene el usuario actual
   const position = usePositionScreen();
+
+  let buttonText;
+  let buttonLink;
+
+  if (!user) {
+    buttonText = "Ingresar";
+    buttonLink = "/publicLogin";
+  } else if (user.Role === "admin") {
+    buttonText = "Dashboard";
+    buttonLink = "/dashboard";
+  } else if (user.Role === "user") {
+    buttonText = "Proyectos";
+    buttonLink = "/myProjects";
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -28,8 +45,8 @@ export default function Navbar() {
           <Typography ml={1} variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/">U-track</Link>
           </Typography>
-          <Link to="publicLogin">
-            <Button color="inherit">Ingresar</Button>
+          <Link to={buttonLink}>
+            <Button color="inherit">{buttonText}</Button>
           </Link>
         </Toolbar>
       </AppBar>

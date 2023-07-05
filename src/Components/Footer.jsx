@@ -34,19 +34,35 @@ export default function Footer() {
                   spacing={2}>
                   <LogoOscuro height="150px" />
                   <div>
-                    <Typography variant="h6" color="white">
+                    <Typography variant="body1" color="white">
                       {/* Pequeño texto */}
-                      Pequeño texto o título del footer
+                      U-track mejorando la comunidad una solicitud a la vez
                     </Typography>
                     {/* Lista <ul> */}
-                    <Typography
-                      color="accent.main"
-                      variant="body1"
-                      component="ul">
-                      <li>Elemento de lista 1</li>
-                      <li>Elemento de lista 2</li>
-                      <li>Elemento de lista 3</li>
-                    </Typography>
+                    <a href="https://github.com/Epsyloun">
+                      <Typography
+                        color="accent.main"
+                        variant="body1"
+                        component="ul">
+                        <li>Epsyloun</li>
+                      </Typography>
+                    </a>
+                    <a href="https://github.com/RicardoM1randa">
+                      <Typography
+                        color="accent.main"
+                        variant="body1"
+                        component="ul">
+                        <li>RicardoM1randa</li>
+                      </Typography>
+                    </a>
+                    <a href="https://github.com/Vicctor123">
+                      <Typography
+                        color="accent.main"
+                        variant="body1"
+                        component="ul">
+                        <li>Vicctor123</li>
+                      </Typography>
+                    </a>
                   </div>
                 </Stack>
               </Container>

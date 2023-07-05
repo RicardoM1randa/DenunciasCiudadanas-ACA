@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { saveNewRegister, getOneRegister, getUserByDUI } from "../firebase/api";
 import { serverTimestamp } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 import {
   Container,
@@ -66,6 +67,20 @@ export default function Contact() {
         saveNewRegister("Projects", newProjectArray);
         saveNewRegister("User", newUserArray);
       }
+
+      // Mostrar alerta de SweetAlert2 y vaciar los campos
+      Swal.fire({
+        icon: "success", // El icono que se muestra en la alerta
+        title: "Solicitud enviada", // El título de la alerta
+        text: "Puede ver sus proyectos iniciando sesión", // El subtítulo de la alerta
+      }).then(() => {
+        // Limpiar los campos después de mostrar la alerta
+        setDUI("");
+        setName("");
+        setEmail("");
+        setAsunto("");
+        setDescripcion("");
+      });
     } catch (error) {
       console.log("Hubo un error al obtener el usuario:", error);
       // Aquí puedes manejar lo que suceda si hay un error al obtener el usuario
