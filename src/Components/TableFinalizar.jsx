@@ -7,12 +7,28 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useState } from "react";
-import ModalAccept from "./ModalAccept";
+import React, { useEffect, useState } from "react";
+import { getRegisters } from "../firebase/api"; // Asegúrate de importar correctamente tus métodos
+import ModalFinalizar from "./ModalFinalizar";
 
-export default function ShowTable({ rows }) {
+export default function TableFinalizar() {
+  const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRowId, setSelectedRowId] = useState(null);
+
+  useEffect(() => {
+    getRegisters("Projects", (querySnapshot) => {
+      const projects = [];
+      querySnapshot.forEach((doc) => {
+        const project = doc.data();
+        project.id = doc.id;
+        if (project.Status === "Aceptado" || project.Status === "Finalizado") {
+          projects.push(project);
+        }
+      });
+      setData(projects);
+    });
+  }, []);
 
   const handleRowClick = (id) => {
     setSelectedRowId(id);
@@ -36,20 +52,23 @@ export default function ShowTable({ rows }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, index) => (
+            {data.map((row, index) => (
               <TableRow key={index} onClick={() => handleRowClick(row.id)}>
                 <TableCell component="th" scope="row">
                   {row.Tittle}
                 </TableCell>
                 <TableCell>{row.Description}</TableCell>
-                <TableCell>{row.Date.toDate().toLocaleDateString()}</TableCell>
+                <TableCell>
+                  {row.Date &&
+                    new Date(row.Date.seconds * 1000).toLocaleDateString()}
+                </TableCell>
                 <TableCell>{row.Status}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <ModalAccept
+      <ModalFinalizar
         open={modalOpen}
         handleClose={handleClose}
         id={selectedRowId}

@@ -26,7 +26,7 @@ export default function Footer() {
               xs={12}
               item
               sx={{ width: "100%", backgroundColor: "primary.main" }}>
-              <Container maxWidth="md">
+              <Container>
                 <Stack
                   direction="row"
                   justifyContent="space-evenly"

@@ -69,6 +69,9 @@ function useThemeHook() {
             accent: {
               main: "#01E2C9",
             },
+            black: {
+              main: "#000000",
+            },
             text: {
               main: "#F7EEC7",
               accent: "#01E2C9",

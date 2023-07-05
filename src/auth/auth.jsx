@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { getUserByDUI } from "../firebase/api";
 
 const roleList = [
   {
@@ -18,41 +19,41 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const navigate = useNavigate();
-  let location = useLocation();
   const [user, setUser] = useState(null);
-  const [SearchedUser, setSearchedUser] = useState(null);
 
-  const login = ({ userName }) => {
-    let from = location.state?.from?.pathname || "/";
-    const findUser = roleList.find(({ name }) => name === userName);
-    let role;
-    let info;
-    if (findUser === undefined) {
-      role = "user";
-    } else {
-      role = findUser.role;
-      info = findUser.info;
+  const login = async ({ userName, from }) => {
+    from = from || "/MyProjects";
+
+    try {
+      const userSnapshot = await getUserByDUI("User", userName);
+
+      if (userSnapshot.length > 0) {
+        console.log("El usuario existe");
+        const userData = userSnapshot[0];
+        console.log(userData);
+        setUser(userData); // ahora estamos guardando todo el objeto de usuario, no solo el rol
+
+        // Redirección basada en el rol
+        if (userData.Role === "admin") {
+          navigate("/dashboard");
+        } else if (userData.Role === "user") {
+          navigate("/myProjects");
+        } else {
+          console.error("Rol desconocido");
+        }
+      } else {
+        console.error("Usuario no encontrado");
+      }
+    } catch (error) {
+      console.error(`Error al obtener el usuario: ${error}`);
     }
-    setUser({ userName, role, info });
-    navigate(from, { replace: true });
   };
   const logout = () => {
     setUser(null);
     navigate("/");
   };
 
-  const searchUser = ({ slug }) => {
-    const findUser = roleList.find(({ name }) => name === slug);
-    let userInfo;
-    if (findUser === undefined) {
-      userInfo = null;
-    } else {
-      userInfo = findUser;
-    }
-    setSearchedUser(userInfo);
-  };
-
-  const auth = { user, SearchedUser, login, logout, searchUser };
+  const auth = { user, login, logout };
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
@@ -65,10 +66,22 @@ function useAuth() {
 function CheckRoute({ children }) {
   const auth = useAuth();
   const location = useLocation();
-  if (!auth.user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+
+  if (!auth.user || auth.user.Role !== "user") {
+    return <Navigate to="/publicLogin" state={{ from: location }} replace />;
   }
+
   return children;
 }
 
-export { AuthProvider, useAuth, CheckRoute };
+function CheckAdminRoute({ children }) {
+  const auth = useAuth();
+  const location = useLocation();
+  if (!auth.user || auth.user.Role !== "admin") {
+    return <Navigate to="/adminLogin" state={{ from: location }} replace />;
+  }
+
+  return children;
+}
+
+export { AuthProvider, useAuth, CheckRoute, CheckAdminRoute };

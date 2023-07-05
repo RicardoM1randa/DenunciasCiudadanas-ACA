@@ -6,9 +6,9 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import { getOneRegister, updateRegister } from "../firebase/api";
+import { getOneRegister, updateRegister } from "../firebase/api"; // Asegúrate de importar correctamente tus métodos
 
-const ModalAccept = ({ open, handleClose, id }) => {
+const ModalFinalizar = ({ open, handleClose, id }) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const ModalAccept = ({ open, handleClose, id }) => {
   const handleStatusChange = async (status) => {
     await updateRegister("Projects", id, { Status: status });
     setData((prevData) => ({ ...prevData, Status: status }));
-    handleClose(); // cierra el diálogo después de cambiar el estado
+    handleClose(); // Cerrar el modal después de cambiar el estado
   };
 
   return (
@@ -39,21 +39,22 @@ const ModalAccept = ({ open, handleClose, id }) => {
         <Typography
           color={"accent.main"}>{`Estado: ${data.Status}`}</Typography>
         <Button
+          sx={{ mt: 2, mr: 1 }}
           variant="outlined"
           color={"secondary"}
-          sx={{ mt: 2, mr: 1 }} // añade un margen superior
-          onClick={() => handleStatusChange("Denegado")}>
-          Marcar como Denegada
-        </Button>
-        <Button
-          variant="contained"
-          sx={{ mt: 2 }} // añade un margen superior
           onClick={() => handleStatusChange("Aceptado")}>
           Marcar como Aceptado
+        </Button>
+        <Button
+          sx={{ mt: 2 }}
+          variant="contained"
+          color={"primary"}
+          onClick={() => handleStatusChange("Finalizado")}>
+          Marcar como Finalizado
         </Button>
       </DialogContent>
     </Dialog>
   );
 };
 
-export default ModalAccept;
+export default ModalFinalizar;

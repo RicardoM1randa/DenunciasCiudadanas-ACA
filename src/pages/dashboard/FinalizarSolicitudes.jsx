@@ -3,8 +3,9 @@ import { Box, Container, Grow, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ShowTable from "../../Components/Table"; // Asegúrate de importar esta función
 import { getRegisters } from "../../firebase/api";
+import TableFinalizar from "../../Components/TableFinalizar";
 
-export default function Solicitudes() {
+export default function FinalizarSolicitudes() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function Solicitudes() {
           ...doc.data(),
         }))
         .filter((project) =>
-          ["Pendiente", "Aceptado", "Denegado"].includes(project.Status)
+          ["Finalizado", "Aceptado"].includes(project.Status)
         );
       console.log(projectsData);
       setProjects(projectsData);
@@ -35,10 +36,10 @@ export default function Solicitudes() {
         <div>
           <Container>
             <Typography variant="h4" color="text.white" sx={{ mt: 2 }}>
-              <Link to={"/dashboard"}>Inicio</Link> > Nuevas
+              <Link to={"/dashboard"}>Inicio</Link> > Proceso
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <ShowTable rows={projects} />
+              <TableFinalizar rows={projects} />
             </Box>
           </Container>
         </div>

@@ -62,7 +62,12 @@ export default function Hero() {
                   xs={12}
                   md={6}
                   display={{ xs: "none", md: "block" }}>
-                  <img src={truckSvg} alt="Construction images" />
+                  <img
+                    src={truckSvg}
+                    alt="Construction images"
+                    width={"100%"}
+                    height={"auto"}
+                  />
                 </Grid>
               </Zoom>
             </Grid>
