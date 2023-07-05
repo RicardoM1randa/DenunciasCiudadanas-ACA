@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
+
 //import de paginas que se crearan
 import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";
