@@ -49,7 +49,7 @@ La Licencia MIT es una licencia de software de código abierto que permite a los
 Para obtener más información sobre la Licencia MIT, puedes consultar el archivo [LICENSE](LICENSE).
 
 # Auditoria de Licencias 
-![LicenciasAudit](./AuditoriaLicencias.html)
+[LicenciasAudit](./AuditoriaLicencias.html)
 
 
 ## Contribuciones
