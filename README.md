@@ -2,7 +2,8 @@
 # U-track - Denuncias Ciudadanas
 
 ## Manual de Usuario
-![Manual](./Documents/Manual.pdf)
+![Manual](./ManualDeUsuario.pdf)
+
 
 ## Aplicación
 https://ricardom1randa.github.io/DenunciasCiudadanas-ACA/
@@ -46,6 +47,10 @@ La Licencia MIT es una licencia de software de código abierto que permite a los
 - Se requiere que se incluya el aviso de copyright y la licencia en todas las copias o partes sustanciales del software.
 
 Para obtener más información sobre la Licencia MIT, puedes consultar el archivo [LICENSE](LICENSE).
+
+# Auditoria de Licencias 
+![LicenciasAudit](./AuditoriaLicencias.html)
+
 
 ## Contribuciones
 
