@@ -1,4 +1,35 @@
-# DenunciasCiudadanas-ACA
+# Proyecto ACA 01/23
+# U-track - Denuncias Ciudadanas
+
+## Manual de Usuario
+![Manual](./Documents/Manual.pdf)
+
+## Aplicación
+https://ricardom1randa.github.io/DenunciasCiudadanas-ACA/
+
+
+## Guía de Instalación
+### Tecnologías y prerrequisitos
+La aplicación y sus componentes han sido utilizados y desarrollados en entorno local haciendo uso de las siguientes versiones de tecnologías, en el sistema operativo Windows 11. 
+### Base de datos
+  * Firebase 
+	-Integrable con cualquier base de datos Relacional.
+
+### Cliente Web
+  * React 18.1.0
+  * Node JS 16.3.0
+  * Npm 7.15.1
+
+## Instalación en entorno de desarrollo   
+
+  1. Clonar el Repertorio 
+  2. Ejecutar el comando:```npm install```.
+  3. Ejecutar el comando:```npm run build``.
+  4. Ejecutar el comando: ```npm start```.
+  5. Puede acceder a la aplicación por medio de un navegador consultando la dirección [http://localhost:3000](http://localhost:3000).
+
+
+## DenunciasCiudadanas-ACA
 Repositorio para el proyecto de Aplicaciones de código abierto, El proyecto del Sistema de Denuncias Ciudadanas es una aplicación web de código abierto diseñada para permitir a los ciudadanos informar y denunciar incidencias o situaciones problemáticas en su comunidad. Los usuarios pueden registrar sus denuncias de manera segura y anónima
 
 ## Licencia
