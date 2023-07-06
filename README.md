@@ -2,7 +2,7 @@
 # U-track - Denuncias Ciudadanas
 
 ## Manual de Usuario
-![Manual](./ManualDeUsuario.pdf)
+[Manual](./ManualDeUsuario.pdf)
 
 
 ## Aplicación
